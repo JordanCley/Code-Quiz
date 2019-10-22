@@ -1,0 +1,10 @@
+.container {
+    max-width: 600px;
+    margin-top: 200px;
+}
+
+body {
+    background-color: gainsboro;
+    margin: 0;
+    padding: 0;
+  }
