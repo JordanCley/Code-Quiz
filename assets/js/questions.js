@@ -30,8 +30,40 @@ let questions = [
     answer: "Indiana"
   }
 ];
+
+// TRACK HOW MANY CORRECT ANSWERS
+// CALCULATE SCORE (5 POINTS PER CORRECT ANSWER)
+// INPUT FOR USERS INITIALS
+// SUBMIT PUSHES HIGHSCORE TO LOCAL STORAGE
+// LOCAL STORAGE APPENDS ELEMENTS IN LIST
+
+
 var storedQuestions = [];
 var currentIndex = 0;
+var counter = questions.length * 15;
+var correct = $(".correct").hide();
+var wrong = $(".wrong").hide();
+
+// COUNTDOWN FUNCTION
+function countDown() {
+  var interval = setInterval(function() {
+    $("#counter").text(counter);
+    counter--;
+    if (counter <= -1) {
+      $("#finalMsg").text("Out of time...");
+      clearInterval(interval);
+      $(location).attr("href", "finalScore.html");
+    }
+  }, 1000);
+}
+
+// FUNCTION CLEARING APPENDED ELEMENTS
+function clear(){
+  setTimeout(function(){
+    $("#questList").empty();
+    genQuest();
+  }, 2000);
+}
 
 // FUNCTION TO CHECK IF ANSWER IS CORRECT
 function checkAnswer() {
@@ -40,16 +72,22 @@ function checkAnswer() {
     console.log(data);
     if (data === questions[currentIndex].answer) {
       // TOGGLING CORRECT
-      $(".correct").toggle(genQuest);
+      correct.show();
+      clear();
     } else {
+      // SUBTRACT 5 SECS FOR WRONG ANSWER
+      counter -= 5;
+      wrong.show();
+      clear();
       // TOGGLING WRONG (GENQUEST NOT WORKING AND NOT TOGGLING BACK OFF)
-      $(".wrong").toggle(genQuest);
     }
   });
 }
 
 // FUNCTION GENERATING RANDOM QUESTION
 function genQuest() {
+  correct.hide();
+  wrong.hide();
   var RandQuest = Math.floor(Math.random() * Math.floor(questions.length));
   var choiceLength = questions[RandQuest].choices.length;
   for (let i = 0; i < choiceLength; i++) {
@@ -66,11 +104,13 @@ function genQuest() {
   // PUSHING PAST QUESTIONS TO AN ARRAY
   storedQuestions.push(RandQuest);
   currentIndex = RandQuest;
+  checkAnswer();
 }
 
-genQuest();
-checkAnswer();
-// console.log("current " + currentIndex);
-// console.log(storedQuestions);
 
+$(document).ready(function() {
+  genQuest();
+  checkAnswer();
+  countDown();
+});
 // console.log(questions[3].answer);
