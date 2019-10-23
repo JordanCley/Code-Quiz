@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 
+    <!-- JQuery -->
+   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- Bootstrap JQuery -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -37,28 +42,26 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <h2>This is where the questions will be?</h2>
+          <h2 id="questionDisp"></h2>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <ol>
-            <li><button>answers</button></li>
-            <li><button>answers</button></li>
-            <li><button>answers</button></li>
-            <li><button>answers</button></li>
-          </ol>
+          <ol id="questList"></ol>
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col correct wrong">
           <hr />
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h3>
-            Right/Wrong
+          <h3 class="correct">
+            Correct!
+          </h3>
+          <h3 class="wrong">
+            Wrong!
           </h3>
         </div>
       </div>

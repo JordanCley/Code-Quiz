@@ -2,6 +2,14 @@
     max-width: 600px;
     margin-top: 200px;
 }
+.correct {
+    display: none;
+}
+
+.wrong {
+    display: none;
+}
+
 
 body {
     background-color: gainsboro;
