@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-
-    
+    <title>Code Quiz</title>
 
     <!-- Bootstrap JQuery -->
     <script
@@ -30,7 +28,7 @@
     <header>
       <nav class="navbar">
         <a id="highScore">
-          <h2  >High-scores</h2>
+          <h2>High-scores</h2>
         </a>
         <h2>Time: <span id="counter"></span></h2>
       </nav>
@@ -67,53 +65,54 @@
 
     <!-- FINAL SCORES CONTAINER -->
     <div class="container center" id="finalScore">
-        <div class="row">
-          <div class="col">
-            <h1 id="finalMsg"></h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <h2>Your score is <span id="score"></span>!</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <form id="form" action="">
-                <h4>Enter your initials:</h4>
-                <input id="initials" type="text">
-                <input id="submit" type="submit">
-            </form>
-          </div>
+      <div class="row">
+        <div class="col">
+          <h1 id="finalMsg"></h1>
         </div>
       </div>
-
-      <!-- HIGHSCORES CONTAINER -->
-      <div class="container center" id="high-score">
-          <div class="row">
-            <div class="col">
-              <h2>High-scores</h2>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <ol id="scoreBoard">
-
-              </ol>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <a href="landing.html">
-                <button class="buttons btn btn-dark">Go Back</button>
-              </a>
-            </div>
-            <div class="col">
-              <button id="clear" class="buttons btn btn-dark">Clear High-scores</button>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col">
+          <h2>Your score is <span id="score"></span>!</h2>
         </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <form id="form" action="">
+            <h4>Enter your initials:</h4>
+            <input id="initials" type="text" />
+            <input id="submit" type="submit" />
+          </form>
+        </div>
+      </div>
+    </div>
 
+    <!-- HIGHSCORES CONTAINER -->
+    <div class="container center" id="high-score">
+      <div class="row">
+        <div class="col">
+          <h2>High-scores</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <ol id="scoreBoard"></ol>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <a href="landing.html">
+            <button class="buttons btn btn-dark">Go Back</button>
+          </a>
+        </div>
+        <div class="col">
+          <button id="clear" class="buttons btn btn-dark">
+            Clear High-scores
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap js -->
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
