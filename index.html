@@ -6,10 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 
-    <!-- JQuery -->
-   
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
 
     <!-- Bootstrap JQuery -->
     <script
@@ -32,17 +29,18 @@
   <body>
     <header>
       <nav class="navbar">
-        <a href="highscores.html">
-          <h2>High-scores</h2>
+        <a id="highScore">
+          <h2  >High-scores</h2>
         </a>
         <h2>Time: <span id="counter"></span></h2>
       </nav>
     </header>
 
-    <div class="container">
+    <!-- QUESTIONS CONTAINER -->
+    <div class="container" id="questions">
       <div class="row">
         <div class="col">
-          <h2 id="questionDisp"></h2>
+          <h2 class="center" id="questionDisp"></h2>
         </div>
       </div>
       <div class="row">
@@ -51,27 +49,79 @@
         </div>
       </div>
       <div class="row">
-        <div class="col correct wrong">
+        <div class="col correct wrong center">
           <hr />
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h3 class="correct">
+          <h3 class="correct center">
             Correct!
           </h3>
-          <h3 class="wrong">
+          <h3 class="wrong center">
             Wrong!
           </h3>
         </div>
       </div>
     </div>
 
+    <!-- FINAL SCORES CONTAINER -->
+    <div class="container center" id="finalScore">
+        <div class="row">
+          <div class="col">
+            <h1 id="finalMsg"></h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h2>Your score is <span id="score"></span>!</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form id="form" action="">
+                <h4>Enter your initials:</h4>
+                <input id="initials" type="text">
+                <input id="submit" type="submit">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIGHSCORES CONTAINER -->
+      <div class="container center" id="high-score">
+          <div class="row">
+            <div class="col">
+              <h2>High-scores</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <ol id="scoreBoard">
+
+              </ol>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a href="landing.html">
+                <button class="buttons btn btn-dark">Go Back</button>
+              </a>
+            </div>
+            <div class="col">
+              <button id="clear" class="buttons btn btn-dark">Clear High-scores</button>
+            </div>
+          </div>
+        </div>
+
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script src="assets/js/questions.js"></script>
   </body>
