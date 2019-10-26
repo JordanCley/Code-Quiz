@@ -25,14 +25,51 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
+
+    <!-- HEADER AND NAV -->
     <header>
-      <nav class="navbar">
+      <nav class="navbar" id="nav">
         <a id="highScore">
           <h2>High-scores</h2>
         </a>
         <h2>Time: <span id="counter"></span></h2>
       </nav>
     </header>
+
+    <!-- LANDING -->
+    <div class="container center" id="landing">
+        <div class="row">
+          <div class="col">
+            <h1>Welcome to Code Quiz!</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h2>~Javascript~</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>
+              You will have 15 secs for each queston. If you get a question wrong,
+              you lose 5 secs. Click the start button to test your knowledge!
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <hr />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a>
+              <button class="buttons btn btn-dark" id="start">Start</button>
+            </a>
+          </div>
+        </div>
+      </div>
+  
 
     <!-- QUESTIONS CONTAINER -->
     <div class="container" id="questions">
@@ -77,7 +114,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <form id="form" action="">
+          <form id="form">
             <h4>Enter your initials:</h4>
             <input id="initials" type="text" />
             <input id="submit" type="submit" />
@@ -100,7 +137,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <a href="landing.html">
+          <a href="">
             <button class="buttons btn btn-dark">Go Back</button>
           </a>
         </div>
@@ -112,14 +149,14 @@
       </div>
     </div>
 
-    <!-- Bootstrap js -->
+    <!-- BOOTSTRAP JS -->
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
 
-    <!-- JQuery -->
+    <!-- JQUERY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script src="assets/js/questions.js"></script>

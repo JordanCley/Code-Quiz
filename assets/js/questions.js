@@ -30,21 +30,32 @@ $(document).ready(function() {
 
   // ********* THINGS LEFT/BUGS*********
   // CHECK FOR RANDOM QUESTION ALREADY BEING USED
-  // SEE USER SCORE IN HIGHSCORES DIRECTLY AFTER SAVING INITIALS
-  // CURRENTLY YOU HAVE TO CLICK GO BACK AND THEN CLICK HIGHSCORES
-  // ONLY LETS YOU ANSWER 4 OF THE 5 QUESTIONS
+  
 
-  var wrongAnswers  = 0,
-    correctAnswers  = 0,
-    score           = 0,
-    storedQuestions = [],
-    currentIndex    = 0,
-    counter         = questions.length * 15,
-    correctDisp     = $(".correct").hide(),
-    wrongDisp       = $(".wrong").hide(),
-    questCont       = $("#questions").hide(),
-    finalCont       = $("#finalScore").hide(),
-    highCont        = $("#high-score").hide();
+  var wrongAnswers    = 0,
+      correctAnswers  = 0,
+      score           = 0,
+      storedQuestions = [],
+      currentIndex    = 0,
+      counter         = questions.length * 15,
+      correctDisp     = $(".correct").hide(),
+      wrongDisp       = $(".wrong").hide(),
+      landingCont     = $("#landing").hide(),
+      questCont       = $("#questions").hide(),
+      finalCont       = $("#finalScore").hide(),
+      navCont         = $("#nav").hide(),
+      highCont        = $("#high-score").hide();
+
+  function start() {
+    landingCont.show();
+    $("#start").on("click", function() {
+      navCont.show();
+      genQuest();
+      countDown();
+      localStore();
+      clearScore();
+    });
+  }
 
   // FUNCTION CREATING LIST ITEMS FOR STORED SCORES
   function scoreList() {
@@ -69,6 +80,8 @@ $(document).ready(function() {
   // HIGHSCORES LINK
   function scoreLink() {
     $("#highScore").on("click", function() {
+      scoreList();
+      landingCont.hide();
       questCont.hide();
       finalCont.hide();
       highCont.show();
@@ -88,11 +101,14 @@ $(document).ready(function() {
         .trim();
       console.log(input);
       localStorage.setItem(input, score);
+      scoreList();
     });
   }
 
   // HANDLING COMPLETED QUIZ
   function complete() {
+    console.log("stored " + storedQuestions);
+    console.log("current " + currentIndex);
     if (storedQuestions.length === questions.length) {
       counter = 100001;
       score = correctAnswers * 5;
@@ -143,7 +159,6 @@ $(document).ready(function() {
         // SHOW CORRECT H3
         correctDisp.show();
         correctAnswers++;
-        localStore();
         clear();
       } else {
         // SUBTRACT 5 SECS FOR WRONG ANSWER
@@ -158,10 +173,13 @@ $(document).ready(function() {
 
   // FUNCTION GENERATING RANDOM QUESTION
   function genQuest() {
+    questCont.show();
+    landingCont.hide();
     correctDisp.hide();
     wrongDisp.hide();
     var RandQuest = Math.floor(Math.random() * Math.floor(questions.length));
     var choiceLength = questions[RandQuest].choices.length;
+    currentIndex = RandQuest;
     for (let i = 0; i < choiceLength; i++) {
       var choiceLst = $("<li>");
       var choiceBtn = $("<button>");
@@ -173,10 +191,12 @@ $(document).ready(function() {
     }
     // DISPLAYING QUESTION TO INDEX.HTML
     $("#questionDisp").text(questions[RandQuest].title);
-    currentIndex = RandQuest;
-    // PUSHING PAST QUESTIONS TO AN ARRAY
-    storedQuestions.push(RandQuest);
+    
     checkAnswer();
+    if (correctAnswers > 0 || wrongAnswers > 0) {
+      // PUSHING PAST QUESTIONS TO AN ARRAY
+      storedQuestions.push(RandQuest);
+    }
     complete();
   }
 
@@ -184,14 +204,9 @@ $(document).ready(function() {
     score = 0;
     storedQuestions = [];
     currentIndex = 0;
-    questCont.show();
+    scoreLink();
+    start();
   }
 
   init();
-  genQuest();
-  countDown();
-  localStore();
-  scoreLink();
-  clearScore();
-  scoreList();
 });
