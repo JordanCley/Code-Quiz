@@ -28,10 +28,6 @@ $(document).ready(function() {
     }
   ];
 
-  // ********* THINGS LEFT/BUGS*********
-  // CHECK FOR RANDOM QUESTION ALREADY BEING USED
-  
-
   var wrongAnswers    = 0,
       correctAnswers  = 0,
       score           = 0,
@@ -107,9 +103,9 @@ $(document).ready(function() {
 
   // HANDLING COMPLETED QUIZ
   function complete() {
-    console.log("stored " + storedQuestions);
-    console.log("current " + currentIndex);
-    if (storedQuestions.length === questions.length) {
+    // console.log("stored " + storedQuestions);
+    // console.log("current " + currentIndex);
+    if (storedQuestions.length === questions.length + 1) {
       counter = 100001;
       score = correctAnswers * 5;
       $("#score").text(score);
@@ -171,6 +167,26 @@ $(document).ready(function() {
     });
   }
 
+  // ********* THINGS LEFT/BUGS*********
+  // CHECK FOR RANDOM QUESTION ALREADY BEING USED
+  // SORT() HIGHSCORES 
+
+  function checkQuest(){
+    for(var i = 0;i < storedQuestions.length - 1;i ++){
+      console.log("stored Questions ondex: " + storedQuestions[i]);
+      console.log("questions index: " + currentIndex);
+      console.log(storedQuestions[i] === currentIndex);
+
+      // COMPARING STORED QUESTIONS ARRAY TO THE 
+      // CURRENT INDEX SELECTED OF QUESTIONS ARRAY 
+
+      if(storedQuestions[i] === currentIndex){
+      //  ******* DO SOMETHING TO GENERATE NEW QUESTION????? *******
+      }
+    }
+    
+  }
+
   // FUNCTION GENERATING RANDOM QUESTION
   function genQuest() {
     questCont.show();
@@ -178,6 +194,10 @@ $(document).ready(function() {
     correctDisp.hide();
     wrongDisp.hide();
     var RandQuest = Math.floor(Math.random() * Math.floor(questions.length));
+    // PUSHING PAST QUESTIONS TO AN ARRAY
+    storedQuestions.push(RandQuest);
+    
+      // console.log("past index: " + pastIndex);
     var choiceLength = questions[RandQuest].choices.length;
     currentIndex = RandQuest;
     for (let i = 0; i < choiceLength; i++) {
@@ -191,11 +211,10 @@ $(document).ready(function() {
     }
     // DISPLAYING QUESTION TO INDEX.HTML
     $("#questionDisp").text(questions[RandQuest].title);
-    
     checkAnswer();
     if (correctAnswers > 0 || wrongAnswers > 0) {
-      // PUSHING PAST QUESTIONS TO AN ARRAY
-      storedQuestions.push(RandQuest);
+      // pastIndex = storedQuestions.length - 1;
+      checkQuest();
     }
     complete();
   }
